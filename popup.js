@@ -74,12 +74,18 @@ document.getElementById("btn-aplicar-rubrica").addEventListener("click", async (
                 document.getElementById("page")?.click();
                 document.getElementById("rubric-options-lockzeropoints")?.click();
 
-                items.forEach((item, i) => {
+                items.forEach(async (item, i) => {
                     const baseId = `rubric-criteria-NEWID${i + 1}`;
                     const parent = document.getElementById(baseId);
+
                     if (!parent) return;
 
                     parent.querySelector(".btn")?.click();
+
+                    // Esperamos 10 ms
+                    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+                    await wait(10);
+
                     const elems = parent.querySelectorAll(".textvalue");
                     const areas = parent.querySelectorAll("textarea");
                     const inputs = parent.querySelectorAll("input.hiddenelement");
@@ -88,13 +94,17 @@ document.getElementById("btn-aplicar-rubrica").addEventListener("click", async (
 
                     elems[0].textContent = areas[0].textContent = item.item;
                     elems[1].textContent = areas[1].textContent = "No realizado";
-                    elems[2].textContent = "0"; inputs[0].value = "0";
+                    elems[2].textContent = "0"; 
+                    inputs[0].value = "0";
                     elems[3].textContent = areas[2].textContent = "Incompleto/incorrecto";
-                    elems[4].textContent = (item.puntos / 4).toString(); inputs[1].value = (item.puntos / 4).toString();
+                    elems[4].textContent = (item.puntos / 4).toString(); 
+                    inputs[1].value = (item.puntos / 4).toString();
                     elems[5].textContent = areas[3].textContent = "Realizado con errores";
-                    elems[6].textContent = (item.puntos / 2).toString(); inputs[2].value = (item.puntos / 2).toString();
+                    elems[6].textContent = (item.puntos / 2).toString(); 
+                    inputs[2].value = (item.puntos / 2).toString();
                     elems[7].textContent = areas[4].textContent = "Correcto";
-                    elems[8].textContent = item.puntos.toString(); inputs[3].value = item.puntos.toString();
+                    elems[8].textContent = item.puntos.toString(); 
+                    inputs[3].value = item.puntos.toString();
                 });
             },
             args: [csvData]
