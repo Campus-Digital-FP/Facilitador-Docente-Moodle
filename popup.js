@@ -50,7 +50,7 @@ document.getElementById("btn-aplicar-rubrica").addEventListener("click", async (
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
             func: (csvData) => {
-                const lines = csvData.split("#").filter(Boolean);
+                const lines = csvData.split("\n").filter(Boolean);
                 const headers = ["item", "puntos"];
                 const items = lines.map(line => {
                     const values = line.split(";");
@@ -122,8 +122,15 @@ document.getElementById("btn-fechas-tarea").addEventListener("click", async () =
             target: { tabId: tab.id },
             func: () => {
                 const y = new Date().getFullYear();
-                document.getElementById("id_duedate_enabled").click();
-                document.getElementById("id_cutoffdate_enabled").click();
+                
+                const dueDateEnabled = document.getElementById("id_duedate_enabled");
+                if(!dueDateEnabled.checked){
+                    dueDateEnabled.click();
+                }
+                const cutOffDateEnabled = document.getElementById("id_cutoffdate_enabled");
+                if(!cutOffDateEnabled.checked){
+                    cutOffDateEnabled.click();
+                }
                 document.getElementById("id_duedate_year").value = y;
                 document.getElementById("id_cutoffdate_year").value = y;
                 document.getElementById("id_duedate_hour").value = 23;
@@ -147,8 +154,17 @@ document.getElementById("btn-fechas-cuestionario").addEventListener("click", asy
             target: { tabId: tab.id },
             func: () => {
                 const y = new Date().getFullYear();
-                document.getElementById("id_timeopen_enabled").click();
-                document.getElementById("id_timeclose_enabled").click();
+                const timeOpenEnabled = document.getElementById("id_timeopen_enabled");
+                if(!timeOpenEnabled.checked){
+                    timeOpenEnabled.click();
+                }
+                const timeCloseEnabled = document.getElementById("id_timeclose_enabled");
+                if(!timeCloseEnabled.checked){
+                    timeCloseEnabled.click();
+                }
+                document.getElementById("id_timeopen_year").value = y;
+                document.getElementById("id_timeopen_hour").value = 0;
+                document.getElementById("id_timeopen_minute").value = 1;
                 document.getElementById("id_timeclose_year").value = y;
                 document.getElementById("id_timeclose_hour").value = 23;
                 document.getElementById("id_timeclose_minute").value = 59;
