@@ -17,26 +17,33 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button"
-                role="tab">Rúbricas</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
-                role="tab">Fechas</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button"
-                role="tab">Acciones masivas</button>
+                role="tab">Tareas</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button"
                 role="tab">Cuestionarios</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button"
+                role="tab">Acciones masivas</button>
         </li>
     </ul>
 
     <div class="tab-content mt-3" id="myTabContent">
         <div class="tab-pane fade show active" id="tab1" role="tabpanel">
 
-            <h3 data-bs-title="This top tooltip is themed via CSS variables.">Calificar rúbrica
+            <h3>Establecer fechas
+                <button type="button" class="btn btn-outline-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Debes la página de configuración de la tarea o cuestionario">
+                    <i class="bi bi-info-circle-fill"></i>
+                </button>
+            </h3>
+
+            <div class="button-group">
+                <button class="action-button btn-verde" id="btn-fechas-tarea">Establecer fechas</button>
+            </div>
+
+
+            <h3>Calificar rúbrica
                 <button type="button" class="btn btn-outline-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Debes estar en la página de corrección de la tarea">
                     <i class="bi bi-info-circle-fill"></i>
                 </button>
@@ -58,70 +65,33 @@
                 <button class="action-button btn-verde" id="btn-aplicar-rubrica">Aplicar</button>
             </div>
 
+            
         </div>
 
-
-        <div class="tab-pane fade" id="tab2" role="tabpanel">
-
-            <h3>Establecer fechas
-                <button type="button" class="btn btn-outline-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Debes la página de configuración de la tarea o cuestionario">
-                    <i class="bi bi-info-circle-fill"></i>
-                </button>
-            </h3>
-
-            <div class="form-container">
-                <div class="d-flex flex-wrap gap-1 mb-3 mt-3">
-                    <label for="fecha-apertura-cbx">Fecha de apertura:</label>
-                    <input type="checkbox" id="fecha-apertura-cbx" checked class="form-check-input">
-                </div>
-
-                <fecha-element name-prefix="apertura"
-                    default-hour="09"
-                    default-minute="59">
-                </fecha-element>
-
-                <div class="d-flex flex-wrap gap-1 mb-3">
-                    <label for="fecha-cierre-cbx">Fecha de cierre:</label>
-                    <input type="checkbox" id="fecha-cierre-cbx" checked class="form-check-input">
-                </div>
-
-                <fecha-element name-prefix="cierre"
-                    default-hour="23"
-                    default-minute="59">
-                </fecha-element>
-            </div>
-
-            <div class="button-group">
-                <button class="action-button btn-verde" id="btn-fechas-tarea">Establecer fechas tarea</button>
-                <button class="action-button btn-celeste" id="btn-fechas-cuestionario">Establecer fechas
-                    cuestionario</button>
-            </div>
-
-        </div>
 
 
         <div class="tab-pane fade" id="tab3" role="tabpanel">
-
-            <div class="alert alert-warning" role="alert">
-                Debes estar en la página principal del curso y rellenar el nombre exacto de la sección donde se encuentran los cuestionarios.
-            </div>
 
             <label for="input-nombre-test">Nombre de la sección con los cuestionarios:</label>
 
             <textarea id="input-nombre-test" rows="1" placeholder="Por ejemplo: Exámen JULIO"></textarea>
 
-            <h3>Modificar cuestionarios de la sección indicada</h3>
+            <h3>Modificar cuestionarios de la sección indicada
+                <button type="button" class="btn btn-outline-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Debes estar en la página principal del curso y rellenar el nombre exacto de la sección donde se encuentran los cuestionarios.">
+                    <i class="bi bi-info-circle-fill"></i>
+                </button>
+            </h3>
 
             <label for="quizzpass">Contraseña de los cuestionarios:</label>
             <input type="text" id="quizzpass" value="" class="form-control">
             
             <div class="form-container">
                 <div class="d-flex flex-wrap gap-1 mb-3 mt-3">
-                    <label for="fecha-apertura-cbx-2">Fecha de apertura:</label>
-                    <input type="checkbox" id="fecha-apertura-cbx-2" name="fecha-apertura-cbx" checked
+                    <label for="fecha-apertura-cbx">Fecha de apertura:</label>
+                    <input type="checkbox" id="fecha-apertura-cbx" name="fecha-apertura-cbx" checked
                         class="form-check-input">
                 </div>
-                <fecha-element name-prefix="apertura-2"
+                <fecha-element name-prefix="apertura"
                     default-hour="9"
                     default-minute="0">
                 </fecha-element>
@@ -129,21 +99,25 @@
 
             <div class="form-container">
                 <div class="d-flex flex-wrap gap-1 mb-3">
-                    <label for="fecha-cierre-cbx-2">Fecha de cierre:</label>
-                    <input type="checkbox" id="fecha-cierre-cbx-2" checked class="form-check-input">
+                    <label for="fecha-cierre-cbx">Fecha de cierre:</label>
+                    <input type="checkbox" id="fecha-cierre-cbx" checked class="form-check-input">
                 </div>
-                <fecha-element name-prefix="cierre-2"
+                <fecha-element name-prefix="cierre"
                     default-hour="23"
                     default-minute="59">
                 </fecha-element>
             </div>
 
             <div class="button-group">
-                <button class="action-button btn-celeste" id="btn-modificar-cuestionarios">Modificar
+                <button class="action-button btn-verde" id="btn-modificar-cuestionarios">Modificar
                     cuestionarios</button>
             </div>
 
-            <h3>Descargar cuestionarios de la sección indicada</h3>
+            <h3>Descargar cuestionarios de la sección indicada
+                <button type="button" class="btn btn-outline-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Debes estar en la página principal del curso y rellenar el nombre exacto de la sección donde se encuentran los cuestionarios.">
+                    <i class="bi bi-info-circle-fill"></i>
+                </button>
+            </h3>
 
             <div class="button-group">
                 <button class="action-button btn-verde" id="btn-descargar-test">Descargar cuestionarios masivos</button>
@@ -153,6 +127,16 @@
 
         <div class="tab-pane fade show" id="tab4" role="tabpanel">
 
+            <h3>Establecer fechas
+                <button type="button" class="btn btn-outline-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Debes la página de configuración de la tarea o cuestionario">
+                    <i class="bi bi-info-circle-fill"></i>
+                </button>
+            </h3>
+
+            <div class="button-group">
+                <button class="action-button btn-verde" id="btn-fechas-cuestionario">Establecer fechas</button>
+            </div>
+
             <h3>Preparar cuestionarios para imprimir 
                 <button type="button" class="btn btn-outline-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Debes estar en una vista previa de un cuestionario">
                     <i class="bi bi-info-circle-fill"></i>
@@ -160,7 +144,7 @@
             </h3>
 
             <div class="button-group">
-                <button class="action-button btn-celeste" id="btn-preparar-test">Preparar cuestionarios para
+                <button class="action-button btn-verde" id="btn-preparar-test">Preparar cuestionarios para
                     imprimir</button>
             </div>
 
