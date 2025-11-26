@@ -82,13 +82,13 @@ document.getElementById("btn-aplicar-rubrica").addEventListener("click", async (
 
                     parent.querySelector(".btn")?.click();
 
-                    // Esperamos 10 ms
+                    // Esperamos 50 ms
                     const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-                    await wait(10);
+                    await wait(50);
 
                     const elems = parent.querySelectorAll(".textvalue");
                     const areas = parent.querySelectorAll("textarea");
-                    const inputs = parent.querySelectorAll("input.hiddenelement");
+                    const inputs = parent.querySelectorAll("span.scorevalue input");
 
                     if (!elems.length) return;
 
