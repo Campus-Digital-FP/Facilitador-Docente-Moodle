@@ -1,42 +1,7 @@
-(function () {
-    const today = new Date();
-    const dia = today.getDate();
-    const mes = today.getMonth() + 1;
-    const anio = today.getFullYear();
+// Inicializar tooltips y popovers de Bootstrap
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
-    function seleccionarValor(id, valor) {
-        const select = document.getElementById(id);
-        if (select) {
-            for (const option of select.options) {
-                if (parseInt(option.value) === valor) {
-                    option.selected = true;
-                    break;
-                }
-            }
-        }
-    }
-
-    function aplicarFecha() {
-        seleccionarValor("apertura-dia", dia);
-        seleccionarValor("apertura-mes", mes);
-        seleccionarValor("apertura-anio", anio);
-        seleccionarValor("apertura-hora", 9);
-        seleccionarValor("apertura-minuto", 0);
-
-        seleccionarValor("cierre-dia", dia);
-        seleccionarValor("cierre-mes", mes);
-        seleccionarValor("cierre-anio", anio);
-        seleccionarValor("cierre-hora", 23);
-        seleccionarValor("cierre-minuto", 59);
-    }
-
-    // Esperar a que el DOM esté listo
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", aplicarFecha);
-    } else {
-        aplicarFecha();
-    }
-})();
 // Botón: No entregado
 document.getElementById("btn-no-entregado").addEventListener("click", async () => {
     try {
