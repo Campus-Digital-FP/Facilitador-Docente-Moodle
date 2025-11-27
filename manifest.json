@@ -5,7 +5,8 @@
   "description": "Facilita la tarea del docente en la plataforma de moodle.",
   "permissions": [
     "scripting",
-    "activeTab"
+    "activeTab",
+    "windows"
   ],
   "action": {
     "default_popup": "popup.html",

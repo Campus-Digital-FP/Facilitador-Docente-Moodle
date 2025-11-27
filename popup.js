@@ -2,6 +2,24 @@
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
+// Cerrar popovers al hacer clic fuera de ellos
+document.addEventListener('click', function (e) {
+    document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => {
+        const pop = bootstrap.Popover.getInstance(el);
+        if (pop && !el.contains(e.target)) pop.hide();
+    });
+});
+
+// Crear ventana independiente
+document.getElementById('abrirVentana').addEventListener('click', () => {
+  chrome.windows.create({
+    url: "popup.html",
+    type: "popup",
+    width: 500,
+    height: 700
+  });
+});
+
 // Botón: No entregado
 document.getElementById("btn-no-entregado").addEventListener("click", async () => {
     try {
