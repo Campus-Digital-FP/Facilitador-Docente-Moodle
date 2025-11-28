@@ -10,26 +10,6 @@ document.addEventListener('click', function (e) {
     });
 });
 
-// Mostrar botón de ventana independiente si y solo si es popup
-
-const esPopup = chrome.extension.getViews({ type: "popup" })
-    .includes(window);
-if (esPopup) {
-    document.getElementById("abrirVentana").style.display = "block";
-} else {
-    document.getElementById("abrirVentana").style.display = "none";
-}
-
-// Crear ventana independiente
-document.getElementById('abrirVentana').addEventListener('click', () => {
-  chrome.windows.create({
-    url: "popup.html",
-    type: "popup",
-    width: 500,
-    height: 700
-  });
-});
-
 // Botón: No entregado
 document.getElementById("btn-no-entregado").addEventListener("click", async () => {
     try {

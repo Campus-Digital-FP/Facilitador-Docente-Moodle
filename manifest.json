@@ -6,13 +6,19 @@
   "permissions": [
     "scripting",
     "activeTab",
-    "windows"
+    "sidePanel"
   ],
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": "icon.png"
+    "default_title": "Abrir Facilitador",
+    "default_icon": "images/estrella.png"
   },
   "host_permissions": [
     "<all_urls>"
-  ]
+  ],
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
 }
